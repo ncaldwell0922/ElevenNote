@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using ElevenNote.Services.Token;
 using Microsoft.OpenApi.Models;
+using ElevenNote.Services.Note;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +47,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITokenService, TokenSevice>();
+builder.Services.AddScoped<INoteService, NoteService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
