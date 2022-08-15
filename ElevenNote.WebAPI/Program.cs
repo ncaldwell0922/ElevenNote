@@ -45,6 +45,9 @@ builder.Services.AddSwaggerGen(c =>
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITokenService, TokenSevice>();
 builder.Services.AddScoped<INoteService, NoteService>();
