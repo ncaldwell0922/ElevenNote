@@ -19,7 +19,7 @@ namespace ElevenNote.Services.Token
     {
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
-        public TokenService(ApplicationDbContext context, IConfiguration configuration)
+        public TokenSevice(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
