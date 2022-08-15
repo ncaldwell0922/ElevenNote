@@ -28,6 +28,16 @@ namespace ElevenNote.WebAPI.Controllers
             return Ok(notes);
         }
 
+        [HttpGet("{noteId:int}")]
+        public async Task<IActionResult> GetNoteById([FromRoute] int noteId)
+        {
+            var detail = await _noteService.GetNoteByIdAsync(noteId);
+
+            return detail is not null
+                ? Ok(detail)
+                : NotFound();
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateNote([FromBody] NoteCreate request)
         {
